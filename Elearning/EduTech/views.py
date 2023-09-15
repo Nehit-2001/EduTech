@@ -99,8 +99,13 @@ def checkout(request, slug):
     course = Course_details.objects.get(slug=slug)
     coupon_code = request.GET.get('coupon')
     
-    user_id = Signup.objects.get(
-                    email = request.session['email'])
+    
+    try:
+       user_id = Signup.objects.get(
+                     email = request.session['email'])
+    
+    except:
+        return redirect('home')
     
     
     payment = None
@@ -187,7 +192,7 @@ def verify_payment(request):
         payment.save()
         
     try:
-        return redirect('home')
+        return redirect('mycourse')
     except:
         return redirect('not working')
     

@@ -30,7 +30,7 @@ EduTech
                   <a href="course/{{crs_dtls.slug}}/" {% if not request.session.name %}data-bs-toggle="modal" data-bs-target="#login"{% endif %}class="card-link btn btn-primary">Enrolled</a>
                   {% else %}
                   <a href="checkout/{{crs_dtls.slug}}/" {% if not request.session.name %}data-bs-toggle="modal" data-bs-target="#login"{% endif %}class="card-link btn btn-primary">Enroll</a>
-                  <a href="course/{{crs_dtls.slug}}" class="card-link btn btn-primary">More</a>
+                  <a href="course/{{crs_dtls.slug}}/" class="card-link btn btn-primary">More</a>
                   {% endif %}
                 </div>
               </div>
