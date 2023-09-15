@@ -25,8 +25,13 @@ EduTech
                   <li class="list-group-item">You Pay: <strong> Rs.{% price_after_discount crs_dtls.price crs_dtls.discount %} </strong></li>
                 </ul>
                 <div class="card-body text-center">
-                  <a href="checkout/{{crs_dtls.slug}}" {% if not request.session.name %}data-bs-toggle="modal" data-bs-target="#login"{% endif %}class="card-link btn btn-primary">Enroll</a>
+                  {% is_enroll request crs_dtls as enrolled %}
+                  {% if enrolled %}
+                  <a href="course/{{crs_dtls.slug}}/" {% if not request.session.name %}data-bs-toggle="modal" data-bs-target="#login"{% endif %}class="card-link btn btn-primary">Enrolled</a>
+                  {% else %}
+                  <a href="checkout/{{crs_dtls.slug}}/" {% if not request.session.name %}data-bs-toggle="modal" data-bs-target="#login"{% endif %}class="card-link btn btn-primary">Enroll</a>
                   <a href="course/{{crs_dtls.slug}}" class="card-link btn btn-primary">More</a>
+                  {% endif %}
                 </div>
               </div>
         </div>

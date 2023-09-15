@@ -63,7 +63,7 @@ class User_Course(models.Model):
     course = models.ForeignKey(Course_details, on_delete=models.CASCADE) 
     
     def __str__(self):
-        return f"{self.user.first_name - self.course.course_name}"  
+        return f'{self.user.first_name} - {self.course.course_name}'
     
 
 class Payment(models.Model):
@@ -71,10 +71,19 @@ class Payment(models.Model):
     payment_id = models.CharField(max_length=200, blank=True, null=True)
     user_info = models.ForeignKey(Signup, on_delete=models.CASCADE)
     course = models.ForeignKey(Course_details, on_delete=models.CASCADE)
-    course_info = models.ForeignKey(User_Course, on_delete=models.CASCADE)
+    course_info = models.ForeignKey(User_Course, on_delete=models.CASCADE, null=True)
     status = models.BooleanField(default=False)
     
     
     def __str__(self):
         return self.order_id
+    
+
+class Ref_code(models.Model):
+    code = models.CharField(max_length=100)
+    course = models.ForeignKey(Course_details, on_delete=models.CASCADE)
+    discount = models.IntegerField(default=0)
+    
+    def __str_(self):
+        return self.code
     

@@ -13,6 +13,8 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('course/<str:slug>/', views.course, name='course'),
     path('checkout/<str:slug>/', views.checkout, name='checkout'),
+    path('verify_payment', views.verify_payment, name='verify_payment'),
+    path('mycourse', views.mycourse, name='mycourse'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

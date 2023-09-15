@@ -21,7 +21,12 @@
                   <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Home</a></li>
                   <li><a href="{% url 'contact' %}" class="nav-link px-2 text-white">Contact</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                  {% if request.session.name %}
+                  <li><a href="{% url "mycourse" %}" class="nav-link px-2 text-white">My Course</a></li>
+                  {% else %}
+                  <li><a href="#" class="nav-link px-2 text-white">FAQ's</a></li>
+                  {% endif %}
+
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                 </ul>
         
