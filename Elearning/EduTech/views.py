@@ -208,6 +208,15 @@ def mycourse(request):
     
     return render (request, 'mycourse.html', context=context)
 
+
+from .serializers import *
+from rest_framework import viewsets
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = Signup.objects.all()
+    serializer_class = SignUpSerializer
+
         
     
     
